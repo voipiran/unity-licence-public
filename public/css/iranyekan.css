@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'iranyekanregular';
+    src: url('../fonts/iranyekanregular-webfont.woff2') format('woff2'),
+        url('../fonts/iranyekanregular-webfont.ttf') format('ttf'),
+         url('../fonts/iranyekanregular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+.iranyekan{
+    font-family: iranyekanregular;
+}
