@@ -19,13 +19,13 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="m-b-0"><i class="mdi {{ $survey->icon }} text-info"></i></h2>
+                        <h2 class="m-b-0"><i class="mdi {{ $survey->icon }} text-warning"></i></h2>
                         <h3 class="">Survey</h3>
                         <h6 class="card-subtitle">{{ $survey->installLabel }} , {{ $survey->licenceLabel }}</h6>
                     </div>
                     <div class="col-12">
                         <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: {{ $survey->percent }}; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $survey->percent }}; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -67,5 +67,24 @@
                 </div>
             </div>
         </div>
+
+         {{-- callRequest  --}}
+         <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="m-b-0"><i class="mdi  {{ $callRequest->icon }} text-success"></i></h2>
+                        <h3 class="">CallRequest</h3>
+                        <h6 class="card-subtitle">{{ $callRequest->installLabel }} , {{ $callRequest->licenceLabel }}</h6>
+                    </div>
+                    <div class="col-12">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ $callRequest->percent }}; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection

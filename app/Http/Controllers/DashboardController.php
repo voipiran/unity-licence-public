@@ -17,17 +17,19 @@ class DashboardController extends Controller
 	 */
 	public function index()
 	{
-		$webphoneLicence   = Licence::where('app' , 'webphone')->first();
-		$surveyLicence     = 'No Licence';
-		$autodialerLicence = 'No Licence';
+		/**webphone license */
+		$webphoneLicence   = Licence::where('app' , 'webphone')->first();		
 		$webphone          = [
 			'install'      => file_exists('/var/www/voipiran/webphone/.env'),
 			'licence'      => ($webphoneLicence) ? true : false,
 			'installLabel' => (file_exists('/var/www/voipiran/webphone/.env')) ? 'Installed' : 'No Install',
-			'licenceLabel' => ($webphoneLicence) ? $webphoneLicence->type : 'No Licence',
+			'licenceLabel' => ($webphoneLicence) ? $webphoneLicence->type : 'No License',
 			'percent'      => (($webphoneLicence) ? ($webphoneLicence->type == 'full' ? '100%' : '5%') : '5%'),
 			'icon'         =>  (($webphoneLicence) && (file_exists('/var/www/voipiran/webphone/.env'))) ? 'mdi-check' : 'mdi-close'
 		];
+
+		/**survey license */
+		$surveyLicence     = 'No Licence';
 		$survey = [
 			'install'      => false,
 			'licence'      => false,
@@ -36,6 +38,9 @@ class DashboardController extends Controller
 			'percent'      => '5%',
 			'icon'         => 'mdi-close'
 		];
+
+		/**autodialer license */
+		$autodialerLicence = 'No Licence';
 		$autodialer = [
 			'install'      => false,
 			'licence'      => false,
@@ -45,10 +50,22 @@ class DashboardController extends Controller
 			'icon'         => 'mdi-close'
 		];
 
+		/**call request license */
+		$callReqeustLicence   = Licence::where('app' , 'callrequest')->first();
+		$callRequest = [
+			'install'      => file_exists('/var/www/html/voipiran/dialer/dial.php'),
+			'licence'      => ($callReqeustLicence) ? true : false,
+			'installLabel' => file_exists('/var/www/html/voipiran/dialer/dial.php') ? 'Installed' : 'no Installed',
+			'licenceLabel' => ($callReqeustLicence) ? $callReqeustLicence->type : "No License",
+			'percent'      =>  (($callReqeustLicence) ? ($callReqeustLicence->type == 'full' ? '100%' : '5%') : '5%'),
+			'icon'         => (($webphoneLicence) && (file_exists('/var/www/html/voipiran/dialer/dial.php'))) ? 'mdi-check' : 'mdi-close'
+		];
+
 		return view('index', [
-			'webphone'   => (object)$webphone,
-			'survey'     => (object)$survey,
-			'autodialer' => (object)$autodialer
+			'webphone'    => (object)$webphone,
+			'survey'      => (object)$survey,
+			'autodialer'  => (object)$autodialer,
+			'callRequest' => (object)$callRequest,
 		]);
 	}
 
