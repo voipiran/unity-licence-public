@@ -14,6 +14,7 @@
 
 @section('content')
     <div class="card-group">
+
         {{-- survey --}}
         <div class="card">
             <div class="card-body">
@@ -68,8 +69,8 @@
             </div>
         </div>
 
-         {{-- callRequest  --}}
-         <div class="card">
+        {{-- callRequest  --}}
+        <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
@@ -85,6 +86,82 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-group">
 
+        {{-- callStats  --}}
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="m-b-0"><i class="mdi {{ $callStats->icon }} text-warning"></i></h2>
+                        <h3 class="">callStats</h3>
+                        <h6 class="card-subtitle">{{ $callStats->installLabel }} , {{ $callStats->licenceLabel }}</h6>
+                    </div>
+                    <div class="col-12">
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $callStats->percent }}; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {{-- irouting  --}}
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="m-b-0"><i class="mdi  {{ $irouting->icon }} text-success"></i></h2>
+                        <h3 class="">irouting</h3>
+                        <h6 class="card-subtitle">{{ $irouting->installLabel }} , {{ $irouting->licenceLabel }}</h6>
+                    </div>
+                    <div class="col-12">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ $irouting->percent }}; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- formatNumber  --}}
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="m-b-0"><i class="mdi {{ $numberFormatter->icon }} text-warning"></i></h2>
+                        <h3 class="">numberFormatter</h3>
+                        <h6 class="card-subtitle">{{ $numberFormatter->installLabel }} , {{ $numberFormatter->licenceLabel }}</h6>
+                    </div>
+                    <div class="col-12">
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $numberFormatter->percent }}; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- display none  --}}
+        <div class="card" style="visibility: hidden">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="m-b-0"><i class="mdi  {{ $numberFormatter->icon }} text-success"></i></h2>
+                        <h3 class="">numberFormatter</h3>
+                        <h6 class="card-subtitle">{{ $numberFormatter->installLabel }} , {{ $numberFormatter->licenceLabel }}</h6>
+                    </div>
+                    <div class="col-12">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ $numberFormatter->percent }}; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     </div>
 @endsection
