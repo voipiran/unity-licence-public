@@ -18,6 +18,12 @@ yes | cp -rf sourceguardian/php.ini /etc
 echo "SourceGuardian Files have Moved Sucsessfully"
 sleep 1
 
+echo "-------------Installing Composer----------------"
+#yum -y -q install php-cli php-zip wget unzip  > /dev/null
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php --install-dir=/usr/local/bin --filename=composer  > /dev/null
+yes | composer install
+
 mkdir /var/www/html/voipiran
 mkdir /var/www/html/voipiran/unity-licence
 mkdir /var/www/voipiran
@@ -53,12 +59,6 @@ php /var/www/voipiran/unity-licence/artisan migrate
 chown -R asterisk:asterisk /var/www/voipiran/unity-licence
 chown -R asterisk:asterisk /var/www/voipiran
 chown -R asterisk:asterisk /var/www/html/voipiran
-
-echo "-------------Installing Composer----------------"
-#yum -y -q install php-cli php-zip wget unzip  > /dev/null
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php composer-setup.php --install-dir=/usr/local/bin --filename=composer  > /dev/null
-yes | composer install
 
 echo "-------------Issabel Menu----------------"
 issabel-menumerge license-menu.xml
