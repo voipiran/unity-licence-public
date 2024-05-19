@@ -8,15 +8,44 @@ rootpw=$(sed -ne 's/.*mysqlrootpwd=//gp' /etc/issabel.conf)
 sleep 1
 
 echo "------------START-----------------"
+#!/bin/bash
+
+
+# Get PHP version
+php_version=$(php -r "echo PHP_MAJOR_VERSION;")
+
+# Perform actions based on PHP version
+if [ "$php_version" -eq 5 ]; then
+    echo "PHP 5 detected. Performing action A."
 
 echo "Install sourceguardian Files"
 echo "------------Copy SourceGaurd-----------------"
 yes | cp -rf sourceguardian/ixed.5.4.lin /usr/lib64/php/modules
 yes | cp -rf sourceguardian/ixed.5.4ts.lin /usr/lib64/php/modules
 yes | cp -rf /etc/php.ini /etc/php-old.ini
-yes | cp -rf sourceguardian/php.ini /etc
+yes | cp -rf sourceguardian/php5.ini /etc/php.ini
 echo "SourceGuardian Files have Moved Sucsessfully"
 sleep 1
+
+
+else
+    echo "PHP 7 (or newer) detected. Performing action B."
+
+echo "Install sourceguardian Files"
+echo "------------Copy SourceGaurd-----------------"
+yes | cp -rf sourceguardian/ixed.7.4.lin /usr/lib64/php/modules
+yes | cp -rf /etc/php.ini /etc/php-old.ini
+yes | cp -rf sourceguardian/php7.ini /etc/php.ini
+echo "SourceGuardian Files have Moved Sucsessfully"
+sleep 1
+
+
+fi
+
+
+
+
+
 
 echo "-------------Installing Composer----------------"
 #yum -y -q install php-cli php-zip wget unzip  > /dev/null
